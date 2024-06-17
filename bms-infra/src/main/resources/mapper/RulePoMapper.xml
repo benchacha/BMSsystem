@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bench.bms.infra.repository.mapper.RulePoMapper">
+
+    <resultMap id="ruleResultMap" type="com.bench.bms.infra.repository.entity.RulePo">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="warnId" column="warn_id" jdbcType="INTEGER"/>
+        <result property="warnName" column="warn_name" jdbcType="VARCHAR"/>
+        <result property="batteryType" column="battery_type" jdbcType="VARCHAR"/>
+        <result property="warnRule" column="warn_rule" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectRules" resultMap="ruleResultMap">
+        select * from WarningRules;
+    </select>
+
+</mapper>
