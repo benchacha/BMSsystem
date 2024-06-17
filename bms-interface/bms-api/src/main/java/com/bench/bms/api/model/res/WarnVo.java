@@ -1,0 +1,20 @@
+package com.bench.bms.api.model.res;
+
+import lombok.Data;
+
+/**
+ * @Author bench
+ * @Date 2024/06/16 18:52
+ **/
+@Data
+public class WarnVo {
+
+    private Integer carId;
+
+    private String batteryType;
+
+    private String warnName;
+
+    private Integer warnLevel;
+
+}
