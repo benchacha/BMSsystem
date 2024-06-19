@@ -16,4 +16,11 @@
         select * from WarningRules;
     </select>
 
+    <select id="selectRulesBySignal" resultMap="ruleResultMap" parameterType="com.bench.bms.domain.model.SignalDo">
+        SELECT * FROM WarningRules
+        WHERE warn_id = #{warnId} AND battery_Type = (
+        SELECT battery_Type FROM carInfo
+        WHERE car_number = #{carId}
+        );
+    </select>
 </mapper>

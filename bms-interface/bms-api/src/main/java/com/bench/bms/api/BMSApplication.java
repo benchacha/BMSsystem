@@ -1,5 +1,6 @@
 package com.bench.bms.api;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan("com.bench")
+@MapperScan("com.bench.bms.infra.repository.mapper")
 public class BMSApplication {
     public static void main(String[] args){
         SpringApplication.run(BMSApplication.class, args);

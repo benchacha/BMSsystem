@@ -12,11 +12,11 @@ import java.util.Map;
 
 @Data
 public class SignalDto {
-    private Integer carId;
+    private Long carId;
     private Integer warnId;
     private Map<String, Double> signal;
 
-    public SignalDto(Integer carId, Integer warnId, Map<String, Double> signal){
+    public SignalDto(Long carId, Integer warnId, Map<String, Double> signal){
         this.carId = carId;
         this.warnId = warnId;
         this.signal = signal;

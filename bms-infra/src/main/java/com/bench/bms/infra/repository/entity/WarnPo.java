@@ -4,16 +4,14 @@ import lombok.Data;
 
 /**
  * @Author bench
- * @Date 2024/06/17 20:04
+ * @Date 2024/06/17 15:22
  **/
 
 @Data
-public class RulePo {
-
+public class WarnPo {
     private Long id;
-    private Integer warnId;
-    private String warnName;
+    private Long carNumber;
     private String batteryType;
-    private String warnRule;
-
+    private String warnName;
+    private Integer warnLevel;
 }

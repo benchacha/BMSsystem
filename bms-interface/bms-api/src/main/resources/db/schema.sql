@@ -2,19 +2,20 @@
 DROP TABLE IF EXISTS `WarningRules`;
 
 CREATE TABLE WarningRules (
-  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT '主键',
-  warn_id VARCHAR(255) NOT NULL COMMENT '规则编号',
-  warn_name VARCHAR(255) NOT NULL COMMENT '规则名称',
-  battery_type VARCHAR(255) NOT NULL COMMENT '电池类型',
-  warn_rule VARCHAR(1024) NOT NULL COMMENT '预警规则',
-  create_time BIGINT UNSIGNED NOT NULL COMMENT '创建时间',
-  create_user VARCHAR(255) NOT NULL COMMENT '创建者',
-  update_time BIGINT UNSIGNED NOT NULL COMMENT '修改时间',
-  update_user VARCHAR(255) NOT NULL COMMENT '修改者',
-  INDEX idx_rule_code (rule_code),
-  INDEX idx_battery_type (battery_type),
-  INDEX idx_rule_name (rule_name)
+      id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT '主键',
+      warn_id VARCHAR(255) NOT NULL COMMENT '规则编号',
+      warn_name VARCHAR(255) NOT NULL COMMENT '规则名称',
+      battery_type VARCHAR(255) NOT NULL COMMENT '电池类型',
+      warn_rule TEXT NOT NULL COMMENT '预警规则',
+      create_time BIGINT UNSIGNED NOT NULL COMMENT '创建时间',
+      create_user VARCHAR(255) NOT NULL COMMENT '创建者',
+      update_time BIGINT UNSIGNED NOT NULL COMMENT '修改时间',
+      update_user VARCHAR(255) NOT NULL COMMENT '修改者',
+      INDEX idx_warn_id (warn_id),
+      INDEX idx_battery_type (battery_type),
+      INDEX idx_warn_rule (warn_rule(255))  -- 如果需要索引，使用前缀索引
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='预警规则表';
+
 
 INSERT INTO WarningRules (warn_id, warn_name, battery_type, warn_rule, create_time, create_user, update_time, update_user)
 VALUES
@@ -23,7 +24,7 @@ VALUES
     ('2', '电流差报警', '三元电池', '3: 0, 1: 1, 0.2: 2', UNIX_TIMESTAMP(), 'admin', UNIX_TIMESTAMP(), 'admin'),
     ('2', '电流差报警', '铁锂电池', '1: 0, 0.5: 1, 0.2: 2', UNIX_TIMESTAMP(), 'admin', UNIX_TIMESTAMP(), 'admin');
 
-DROP TABLE IF EXISTS `VehicleInfo`;
+DROP TABLE IF EXISTS `CarInfo`;
 CREATE TABLE CarInfo (
      id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT '主键',
      vid VARCHAR(16) NOT NULL COMMENT '车辆识别码，每辆车唯一，16位随机字符串',
@@ -36,7 +37,7 @@ CREATE TABLE CarInfo (
      update_time BIGINT UNSIGNED NOT NULL COMMENT '修改时间',
      update_user VARCHAR(255) NOT NULL COMMENT '修改者',
      UNIQUE INDEX idx_vid (vid),
-     INDEX idx_chassis_number (chassis_number),
+     INDEX idx_car_number (car_number),
      INDEX idx_battery_type (battery_type)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='车辆信息表';
 

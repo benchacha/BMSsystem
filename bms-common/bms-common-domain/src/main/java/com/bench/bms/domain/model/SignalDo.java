@@ -2,6 +2,8 @@ package com.bench.bms.domain.model;
 
 import lombok.Data;
 
+import java.util.Map;
+
 /**
  * @Author bench
  * @Date 2024/06/17 13:04
@@ -9,8 +11,7 @@ import lombok.Data;
 
 @Data
 public class SignalDo {
-    private Integer carId;
+    private Long carId;
     private Integer warnId;
-    private Double max;
-    private Double min;
+    private Map<String, Double> signal;
 }

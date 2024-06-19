@@ -1,6 +1,11 @@
 package com.bench.bms.infra.repository.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.bench.bms.domain.model.SignalDo;
+import com.bench.bms.infra.repository.entity.RulePo;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @Author bench
@@ -8,5 +13,9 @@ import org.apache.ibatis.annotations.Mapper;
  **/
 
 @Mapper
-public interface RulePoMapper {
+public interface RulePoMapper extends BaseMapper<RulePo> {
+
+    List<RulePo> selectRules();
+
+    RulePo selectRulesBySignal(SignalDo signalDo);
 }

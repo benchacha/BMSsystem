@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class WarnVo {
 
-    private Integer carId;
+    private Long carId;
 
     private String batteryType;
 

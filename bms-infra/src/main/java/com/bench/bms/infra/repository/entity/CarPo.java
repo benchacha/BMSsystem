@@ -10,10 +10,7 @@ import lombok.Data;
  **/
 
 @Data
-@TableName("VehicleInfo")
 public class CarPo {
-
-    @TableId("id")
     private Long id;
     private String vId;
     private Long carNumber;

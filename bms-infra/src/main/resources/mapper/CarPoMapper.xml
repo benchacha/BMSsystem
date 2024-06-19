@@ -13,8 +13,12 @@
         <result property="batteryStatus" column="battery_status" jdbcType="INTEGER"/>
     </resultMap>
 
-    <select id="selectCar" resultMap="carResultMap">
-        select * from book;
+    <select id="searchByCarNumber" resultType="com.bench.bms.infra.repository.entity.CarPo">
+        SELECT * FROM carInfo WHERE car_number = #{carNumber}
+    </select>
+
+    <select id="ListAllCar" resultType="com.bench.bms.infra.repository.entity.CarPo">
+        select * from carInfo;
     </select>
 
 </mapper>
