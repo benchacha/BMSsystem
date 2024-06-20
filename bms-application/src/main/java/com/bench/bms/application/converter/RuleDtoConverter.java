@@ -11,6 +11,9 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface RuleDtoConverter {
+
     RuleDto toDto(RuleDo ruleDo);
+
     RuleDo toDo(RuleDto ruleDto);
+
 }

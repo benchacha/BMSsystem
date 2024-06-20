@@ -7,35 +7,36 @@ import lombok.Data;
  * @Date 2024/06/16 14:22
  **/
 @Data
-public class BaseRes<T>  {
+public class BaseRes<T> {
 
-    public static final int CODE_SUCCESS = 0;
+    public static final int STATUS_SUCCESS = 200;
+    public static final int REQUEST_ERROR = 400;
+    public static final int STATUS_ERROR = 500;
 
-    public static final int CODE_ERROR = -1;
 
-
-    private int code;
-
-    private String message;
-
+    private int status;
+    private String msg;
     private T data;
 
-    public BaseRes(int code, String message, T data) {
-        this.setCode(code);
-        this.setMessage(message);
+    public BaseRes(int status, String msg, T data) {
+        this.setStatus(status);
+        this.setMsg(msg);
         this.setData(data);
     }
 
     public static <T> BaseRes<T> success() {
-        return new BaseRes<T>(CODE_SUCCESS, "success", null);
+        return new BaseRes<>(STATUS_SUCCESS, "ok", null);
     }
 
     public static <T> BaseRes<T> success(T data) {
-        return new BaseRes<T>(CODE_SUCCESS, "success", data);
+        return new BaseRes<>(STATUS_SUCCESS, "ok", data);
     }
 
     public static <T> BaseRes<T> error(String msg) {
-        return new BaseRes<T>(CODE_ERROR, msg, null);
+        return new BaseRes<>(STATUS_ERROR, msg, null);
     }
 
+    public static <T> BaseRes<T> requestError(String msg) {
+        return new BaseRes<>(REQUEST_ERROR, msg, null);
+    }
 }

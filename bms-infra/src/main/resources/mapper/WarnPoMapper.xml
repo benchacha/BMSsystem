@@ -6,19 +6,17 @@
 
     <resultMap id="warnResultMap" type="com.bench.bms.infra.repository.entity.WarnPo">
         <id property="id" column="id" jdbcType="BIGINT"/>
-        <result property="carNumber" column="car_number" jdbcType="BIGINT"/>
+        <result property="carId" column="car_idr" jdbcType="BIGINT"/>
         <result property="batteryType" column="battery_type" jdbcType="VARCHAR"/>
         <result property="warnName" column="warn_name" jdbcType="VARCHAR"/>
         <result property="warnLevel" column="warn_level" jdbcType="INTEGER"/>
     </resultMap>
 
     <insert id="save">
-        INSERT INTO warn_info (car_number, battery_type, warn_name, warn_level)
-        VALUES (#{carNumber}, #{batteryType}, #{warnName}, #{warnLevel})
+        INSERT INTO Warn (car_id, battery_type, warn_name, warn_level)
+        VALUES (#{carId}, #{batteryType}, #{warnName}, #{warnLevel})
     </insert>
 
-<!--    <select id="selectWarns" resultMap="warnResultMap">-->
-<!--        select * from WarningRules;-->
-<!--    </select>-->
+
 
 </mapper>

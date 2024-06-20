@@ -15,6 +15,6 @@ public class WarnVo {
 
     private String warnName;
 
-    private Integer warnLevel;
+    private String warnLevel;
 
 }

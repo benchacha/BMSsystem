@@ -25,9 +25,7 @@ public class WarnRepositoryImpl implements WarnRepository {
     @Override
     public boolean saveWarn(WarnDo warnDo) {
 
-//        1、利用warnPoConverter将warnDo转化为warnPo
         WarnPo warnPo = warnPoConverter.toPo(warnDo);
-//        2、利用warnPoMapper将warnPo保存到数据库当中。
 
         return warnPoMapper.save(warnPo);
     }

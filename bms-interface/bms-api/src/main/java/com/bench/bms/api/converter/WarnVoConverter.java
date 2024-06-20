@@ -4,6 +4,7 @@ import com.bench.bms.api.model.res.WarnVo;
 import com.bench.bms.application.model.WarnDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 
 /**
  * @Author bench
@@ -13,9 +14,15 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface WarnVoConverter {
 
-//    @Mapping(source = "carId", target = "carNumber")
-    @Mapping(source = "batteryType", target = "batteryType")
-    @Mapping(source = "warnName", target = "warnName")
-    @Mapping(source = "warnLevel", target = "warnLevel")
+    @Mapping(source = "warnLevel", target = "warnLevel", qualifiedByName = "mapWarnLevel")
     WarnVo toVo(WarnDto warnDto);
+
+    @Named("mapWarnLevel")
+    default String mapWarnLevel(Integer warnLevel) {
+        if (warnLevel == -1) {
+            return "不报警";
+        } else {
+            return warnLevel.toString();
+        }
+    }
 }

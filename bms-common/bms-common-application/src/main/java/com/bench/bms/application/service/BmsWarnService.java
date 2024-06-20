@@ -14,6 +14,4 @@ public interface BmsWarnService {
 
     WarnDto getWarn(SignalDto signalDto);
 
-    List<SignalDto> signalHandle(List<SignalDto> signalDtoList);
-
 }

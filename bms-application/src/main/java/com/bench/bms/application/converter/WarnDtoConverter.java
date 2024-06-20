@@ -14,7 +14,7 @@ import org.mapstruct.Mapping;
 public interface WarnDtoConverter {
 
     WarnDo toDo(WarnDto warnDto);
-    @Mapping(source = "carNumber", target = "carId")
+//    @Mapping(source = "carId", target = "carId")
     WarnDto toDto(WarnDo warnDo);
 
 }

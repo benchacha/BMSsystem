@@ -16,15 +16,15 @@ import org.springframework.stereotype.Component;
 public interface WarnPoConverter {
 
 
-    @Mapping(source = "carNumber", target = "carNumber")
+    @Mapping(source = "carId", target = "carId")
     @Mapping(source = "batteryType", target = "batteryType")
     @Mapping(source = "warnName", target = "warnName")
     @Mapping(source = "warnLevel", target = "warnLevel")
     WarnPo toPo(WarnDo warnDo);
 
-//    @Mapping(source = "carNumber", target = "carNumber")
-//    @Mapping(source = "batteryType", target = "batteryType")
-//    @Mapping(source = "warnName", target = "warnName")
-//    @Mapping(source = "warnLevel", target = "warnLevel")
+    @Mapping(source = "carId", target = "carId")
+    @Mapping(source = "batteryType", target = "batteryType")
+    @Mapping(source = "warnName", target = "warnName")
+    @Mapping(source = "warnLevel", target = "warnLevel")
     WarnDo toDo(WarnPo warnPo);
 }

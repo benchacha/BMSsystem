@@ -6,6 +6,7 @@ import com.bench.bms.api.model.req.SignalReq;
 import com.bench.bms.application.model.SignalDto;
 import com.bench.bms.application.model.WarnDto;
 import com.bench.bms.application.service.BmsWarnService;
+import com.bench.bms.application.service.SignalListHandle;
 import com.bench.bms.domain.model.RuleDo;
 import com.bench.bms.domain.model.SignalDo;
 import com.bench.bms.domain.model.WarnDo;
@@ -37,6 +38,9 @@ public class WarnPoDtoConverterTest {
     @Resource
     private WarnRepository warnRepository;
 
+    @Resource
+    private SignalListHandle signalListHandle;
+
     @Test
     public void testToDto() {
         SignalReq signalReq = new SignalReq();
@@ -49,7 +53,7 @@ public class WarnPoDtoConverterTest {
         List<SignalDto> signalDtoList = new ArrayList<>();
         signalDtoList.add(signalDto);
 
-        signalDtoList = bmsWarnService.signalHandle(signalDtoList);
+        signalDtoList = signalListHandle.signalHandle(signalDtoList);
 
         System.out.println(signalDtoList.get(0));
 

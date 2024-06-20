@@ -4,13 +4,17 @@ import com.bench.bms.api.converter.SignalVoConverter;
 import com.bench.bms.api.converter.WarnVoConverter;
 import com.bench.bms.api.model.req.SignalReq;
 import com.bench.bms.api.model.res.WarnVo;
-import com.bench.bms.application.converter.WarnDtoConverter;
 import com.bench.bms.application.model.SignalDto;
 import com.bench.bms.application.model.WarnDto;
 import com.bench.bms.application.service.BmsWarnService;
+import com.bench.bms.application.service.SignalListHandle;
 import com.bench.bms.common.model.BaseRes;
+import com.bench.bms.common.model.ValidGroup.ReportGroup;
+import com.bench.bms.common.model.ValidList;
 import jakarta.annotation.Resource;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,24 +42,20 @@ public class BMSController {
     @Resource
     private BmsWarnService bmsWarnService;
 
-    @PostMapping("warn")
-    public BaseRes<List<WarnVo>> queryWarnLevel(@RequestBody List<SignalReq> signalReqList) {
+    @Resource
+    private SignalListHandle signalListHandle;
 
-        for (SignalReq signalReq : signalReqList){
-            System.out.println(signalReq);
-        }
-//        将接受到的列表信息，通过lambda函数调用signalVoConverter
+    @PostMapping("warn")
+    public BaseRes<List<WarnVo>> queryWarnLevel(@Validated(ReportGroup.class) @RequestBody ValidList<SignalReq> signalReqList) {
+
+
         List<SignalDto> signalDtoList = signalReqList.stream()
                 .map(signalVoConverter::toDto)
                 .collect(Collectors.toList());
 
-        signalDtoList = bmsWarnService.signalHandle(signalDtoList);
+        signalDtoList = signalListHandle.signalHandle(signalDtoList);
 
-        signalDtoList.forEach(System.out::println);
-//        将接受到的signalReq，bmsWarnService得到warnInfo
-
-//        WarnDto test = bmsWarnService.getWarn(signalDtoList.get(0));
-        List<WarnDto> warnDtoList = signalDtoList.stream()
+            List<WarnDto> warnDtoList = signalDtoList.stream()
                 .map(signalDto -> bmsWarnService.getWarn(signalDto))
                 .collect(Collectors.toList());
 
@@ -65,5 +65,4 @@ public class BMSController {
 
         return BaseRes.success(warnVoList);
     }
-
 }

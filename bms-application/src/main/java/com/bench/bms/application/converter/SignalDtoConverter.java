@@ -13,10 +13,10 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface SignalDtoConverter {
 
-    @Mapping(source = "signal", target = "signal")
+//    @Mapping(source = "signal", target = "signal")
     SignalDo toDo(SignalDto signalDto);
 
-    @Mapping(source = "signal", target = "signal")
+//    @Mapping(source = "signal", target = "signal")
     SignalDto toDto(SignalDo signalDo);
 
 }

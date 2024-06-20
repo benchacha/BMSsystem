@@ -13,7 +13,7 @@ import lombok.Data;
 public class CarPo {
     private Long id;
     private String vId;
-    private Long carNumber;
+    private Long carId;
     private String batteryType;
     private Long totalMileage;
     private Integer batteryStatus;
