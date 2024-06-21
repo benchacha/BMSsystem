@@ -10,6 +10,10 @@
         <result property="warnName" column="warn_name" jdbcType="VARCHAR"/>
         <result property="batteryType" column="battery_type" jdbcType="VARCHAR"/>
         <result property="warnRule" column="warn_rule" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="BIGINT"/>
+        <result property="createUser" column="create_user" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="BIGINT"/>
+        <result property="updateUser" column="update_user" jdbcType="VARCHAR"/>
     </resultMap>
 
     <select id="selectRules" resultMap="ruleResultMap">

@@ -40,7 +40,6 @@ public class SignalRepositoryImpl implements SignalRepository {
             ruleRedisService.set(redisKey, rulePo, CACHE_TIMEOUT);
             System.out.println("查询数据库");
         }
-
         return rulePoConverter.toDo(rulePo);
     }
 

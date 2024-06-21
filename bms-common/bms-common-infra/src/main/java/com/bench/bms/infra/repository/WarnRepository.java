@@ -9,6 +9,6 @@ import com.bench.bms.domain.model.WarnDo;
 public interface WarnRepository {
 
 //    保存警告信息
-    boolean saveWarn(WarnDo warnDo);
+    int saveWarn(WarnDo warnDo);
 
 }

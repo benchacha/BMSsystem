@@ -8,6 +8,7 @@ import com.bench.bms.infra.repository.SignalRepository;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @Author bench
@@ -22,11 +23,12 @@ public class SignalDomainServiceImpl implements SignalDomainService {
 
 //    private RulePo
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public RuleDo getRuleBySignal(SignalDo signalDo) {
 
         RuleDo ruleDo = signalRepository.getRule(signalDo);
-
+//        throw new RuntimeException("预警信息事务回滚测试");
         return ruleDo;
     }
 }

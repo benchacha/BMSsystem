@@ -3,3 +3,6 @@ spring:
     name: bms-api
   profiles:
     active: database, orm, web
+
+user:
+  name: bench

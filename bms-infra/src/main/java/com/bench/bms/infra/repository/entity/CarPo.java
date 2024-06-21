@@ -1,8 +1,8 @@
 package com.bench.bms.infra.repository.entity;
 
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * @Author bench
@@ -10,12 +10,26 @@ import lombok.Data;
  **/
 
 @Data
+@TableName("car")
 public class CarPo {
+    @TableId(type = IdType.AUTO)
     private Long id;
-    private String vId;
+    private String vid;
     private Long carId;
     private String batteryType;
     private Long totalMileage;
     private Integer batteryStatus;
+
+    @TableField(fill = FieldFill.INSERT)
+    private Long createTime;
+
+    @TableField(fill = FieldFill.INSERT)
+    private String createUser;
+
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Long updateTime;
+
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private String updateUser;
 
 }

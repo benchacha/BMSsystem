@@ -23,10 +23,11 @@ public class WarnRepositoryImpl implements WarnRepository {
     private WarnPoMapper warnPoMapper;
 
     @Override
-    public boolean saveWarn(WarnDo warnDo) {
+    public int saveWarn(WarnDo warnDo) {
 
         WarnPo warnPo = warnPoConverter.toPo(warnDo);
 
-        return warnPoMapper.save(warnPo);
+//        return warnPoMapper.save(warnPo);
+        return warnPoMapper.insert(warnPo);
     }
 }

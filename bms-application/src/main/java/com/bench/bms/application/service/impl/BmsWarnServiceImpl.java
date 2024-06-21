@@ -52,17 +52,13 @@ public class BmsWarnServiceImpl implements BmsWarnService {
 //        2、根据查询到的规则和信号，判断报警信息
         WarnDo warnDo = ruleDomainService.getWarn(signalDo, ruleDo);
 //        3、保存报警信息
-        if (warnDomainService.saveWarn(warnDo)){
-            System.out.println("保存成功");
-        } else {
-            System.out.println("保存失败");
-        }
+        warnDomainService.saveWarn(warnDo);
+
         System.out.println(warnDo);
 //        4、向接口返回预警信息
         WarnDto warnDto = warnDtoConverter.toDto(warnDo);
         return warnDto;
     }
 
-//    将二和一的信号拆分为俩个
 
 }

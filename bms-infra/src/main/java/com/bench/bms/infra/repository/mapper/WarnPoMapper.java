@@ -14,6 +14,6 @@ import java.util.List;
 
 @Mapper
 public interface WarnPoMapper extends BaseMapper<WarnPo> {
-    boolean save(WarnPo warnPo);
+
 }
 

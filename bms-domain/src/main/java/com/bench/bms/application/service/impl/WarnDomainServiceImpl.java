@@ -18,7 +18,7 @@ public class WarnDomainServiceImpl implements WarnDomainService {
     private WarnRepository warnRepository;
 
     @Override
-    public boolean saveWarn(WarnDo warnDo) {
+    public int saveWarn(WarnDo warnDo) {
         return warnRepository.saveWarn(warnDo);
     }
 }

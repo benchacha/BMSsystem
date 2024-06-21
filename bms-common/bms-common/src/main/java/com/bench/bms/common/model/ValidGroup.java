@@ -10,4 +10,20 @@ public interface ValidGroup {
 
     }
 
+    public interface InsertGroup{
+
+    }
+
+    public interface UpdateGroup{
+
+    }
+
+    public interface RemoveGroup{
+
+    }
+
+    public interface SearchGroup{
+
+    }
+
 }

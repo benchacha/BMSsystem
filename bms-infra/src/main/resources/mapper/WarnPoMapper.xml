@@ -10,12 +10,16 @@
         <result property="batteryType" column="battery_type" jdbcType="VARCHAR"/>
         <result property="warnName" column="warn_name" jdbcType="VARCHAR"/>
         <result property="warnLevel" column="warn_level" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="BIGINT"/>
+        <result property="createUser" column="create_user" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="BIGINT"/>
+        <result property="updateUser" column="update_user" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <insert id="save">
-        INSERT INTO Warn (car_id, battery_type, warn_name, warn_level)
-        VALUES (#{carId}, #{batteryType}, #{warnName}, #{warnLevel})
-    </insert>
+<!--    <insert id="save">-->
+<!--        INSERT INTO Warn (car_id, battery_type, warn_name, warn_level)-->
+<!--        VALUES (#{carId}, #{batteryType}, #{warnName}, #{warnLevel})-->
+<!--    </insert>-->
 
 
 
