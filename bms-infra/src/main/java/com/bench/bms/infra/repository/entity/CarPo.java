@@ -2,12 +2,13 @@ package com.bench.bms.infra.repository.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Value;
 
 /**
  * @Author bench
  * @Date 2024/06/17 20:03
  **/
+
+// 命名为CarPo是为了方便我对DDD架构的理解。
 
 @Data
 @TableName("car")

@@ -16,8 +16,8 @@ public interface CarService {
 
     void modifyCar(Long carId, CarDto carDto);
 
-    CarDto searchCar(Long carId);
+    CarDto getCar(Long carId);
 
-    List<CarDto> listAllCar();
+    List<CarDto> listCars();
 
 }

@@ -19,11 +19,12 @@
     </resultMap>
 
     <select id="searchByCarId" resultType="com.bench.bms.infra.repository.entity.CarPo">
-        SELECT * FROM Car WHERE car_id = #{carId}
+        SELECT id, vid, car_id, battery_type, total_mileage, battery_status
+        FROM Car WHERE car_id = #{carId}
     </select>
 
     <select id="ListAllCar" resultType="com.bench.bms.infra.repository.entity.CarPo">
-        SELECT * FROM Car;
+        SELECT id, vid, car_id, battery_type, total_mileage, battery_status FROM Car;
     </select>
 
 </mapper>

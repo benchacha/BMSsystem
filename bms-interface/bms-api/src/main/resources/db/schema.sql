@@ -18,33 +18,12 @@ CREATE TABLE RULE (
       INDEX idx_warn_rule (warn_rule(255))  -- 如果需要索引，使用前缀索引
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='预警规则表';
 
-DELIMITER //
-CREATE TRIGGER set_create_rule
-    BEFORE INSERT ON RULE
-    FOR EACH ROW
-BEGIN
-    SET NEW.create_time = UNIX_TIMESTAMP();
-    SET NEW.update_time = UNIX_TIMESTAMP();
-    SET NEW.create_user = USER();
-    SET NEW.update_user = USER();
-END //
-
-CREATE TRIGGER set_update_rule
-    BEFORE UPDATE ON RULE
-    FOR EACH ROW
-BEGIN
-    SET NEW.update_time = UNIX_TIMESTAMP();
-    SET NEW.update_user = USER();
-END //
-DELIMITER ;
-
 INSERT INTO RULE (warn_id, warn_name, battery_type, warn_rule)
 VALUES
     ('1', '电压差报警', '三元电池', '5: 0, 3: 1, 1: 2, 0.6: 3; 0.2: 4'),
     ('1', '电压差报警', '铁锂电池', '2: 0, 1: 1, 0.7: 2, 0.4: 3; 0.2: 4'),
     ('2', '电流差报警', '三元电池', '3: 0, 1: 1, 0.2: 2'),
     ('2', '电流差报警', '铁锂电池', '1: 0, 0.5: 1, 0.2: 2');
-
 
 CREATE TABLE CAR (
      id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT '主键',
@@ -62,33 +41,11 @@ CREATE TABLE CAR (
      INDEX idx_battery_type (battery_type)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='车辆信息表';
 
-DELIMITER //
-CREATE TRIGGER set_create_car
-    BEFORE INSERT ON CAR
-    FOR EACH ROW
-BEGIN
-    SET NEW.create_time = UNIX_TIMESTAMP();
-    SET NEW.update_time = UNIX_TIMESTAMP();
-    SET NEW.create_user = USER();
-    SET NEW.update_user = USER();
-END//
-
-CREATE TRIGGER set_update_car
-    BEFORE UPDATE ON CAR
-    FOR EACH ROW
-BEGIN
-    SET NEW.update_time = UNIX_TIMESTAMP();
-    SET NEW.update_user = USER();
-END//
-
-DELIMITER ;
-
 INSERT INTO CAR (vid, car_id, battery_type, total_mileage, battery_status)
 VALUES
     ('1a2b3c4d5e6f7g8h', 1, '三元电池', 100, 100),
     ('2b3c4d5e6f7g8h9i', 2, '铁锂电池', 600, 95),
     ('3c4d5e6f7g8h9i0j', 3, '三元电池', 300, 98);
-
 
 CREATE TABLE WARN (
        id bigint UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键',
@@ -102,23 +59,3 @@ CREATE TABLE WARN (
        update_user varchar(50) NOT NULL COMMENT '修改者',
        PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='警告信息表，存储车辆警告信息';
-
-DELIMITER //
-CREATE TRIGGER set_create_warn
-    BEFORE INSERT ON WARN
-    FOR EACH ROW
-BEGIN
-    SET NEW.create_time = UNIX_TIMESTAMP();
-    SET NEW.update_time = UNIX_TIMESTAMP();
-    SET NEW.create_user = USER();
-    SET NEW.update_user = USER();
-END//
-
-CREATE TRIGGER set_update_warn
-    BEFORE UPDATE ON WARN
-    FOR EACH ROW
-BEGIN
-    SET NEW.update_time = UNIX_TIMESTAMP();
-    SET NEW.update_user = USER();
-END//
-DELIMITER ;

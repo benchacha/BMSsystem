@@ -1,7 +1,6 @@
 package com.bench.bms.infra.repository.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.bench.bms.domain.model.WarnDo;
 import com.bench.bms.infra.repository.entity.WarnPo;
 import org.apache.ibatis.annotations.Mapper;
 

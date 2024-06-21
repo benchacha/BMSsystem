@@ -43,8 +43,8 @@ public class CarDomainServiceImpl implements CarDomainService {
 
     @Override
     public String generateVid(String input){
-        long timestamp = System.currentTimeMillis();
-        String timestampStr = Long.toString(timestamp);
+        long timeStamp = System.currentTimeMillis();
+        String timestampStr = Long.toString(timeStamp);
         String vidHash = DigestUtils.md5DigestAsHex((input + timestampStr).getBytes()).substring(0, 3);
         return vidHash + timestampStr;
     }

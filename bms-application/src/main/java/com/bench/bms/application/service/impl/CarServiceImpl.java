@@ -48,13 +48,13 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public CarDto searchCar(Long carId) {
+    public CarDto getCar(Long carId) {
         CarDo carDo = carRepository.fingByCarId(carId);
         return carDtoConverter.toDto(carDo);
     }
 
     @Override
-    public List<CarDto> listAllCar() {
+    public List<CarDto> listCars() {
         List<CarDo> carDoList = carRepository.list();
         List<CarDto> carDtoList = carDoList.stream()
                 .map(carDtoConverter::toDto)

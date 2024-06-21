@@ -51,7 +51,7 @@ public class CarController {
     @GetMapping("/car/{carId}")
     public BaseRes<CarVo> findCar(@PathVariable(value = "carId") Long carId) {
         log.info("request find car:{}. ", carId);
-        CarDto carDto = carService.searchCar(carId);
+        CarDto carDto = carService.getCar(carId);
         log.info("request find user:{}. response", carDto);
         return BaseRes.success(carVoConverter.toVo(carDto));
     }
@@ -59,7 +59,7 @@ public class CarController {
     @GetMapping("/car")
     public BaseRes<List<CarVo>> listAllCar() {
         log.info("request find car:{}. ");
-        List<CarDto> carDtoList = carService.listAllCar();
+        List<CarDto> carDtoList = carService.listCars();
         log.info("request find user:{}. response");
         List<CarVo> carVoList = carDtoList.stream()
                 .map(carVoConverter::toVo)

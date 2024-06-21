@@ -4,5 +4,5 @@ spring:
   profiles:
     active: database, orm, web
 
-user:
+creator:
   name: bench

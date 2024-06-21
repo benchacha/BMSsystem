@@ -17,14 +17,13 @@
     </resultMap>
 
     <select id="selectRules" resultMap="ruleResultMap">
-        select * from Rule;
+        select id, warn_id, warn_name, battery_type, warn_rule, from Rule;
     </select>
 
     <select id="selectRulesBySignal" resultMap="ruleResultMap" parameterType="com.bench.bms.domain.model.SignalDo">
-        SELECT * FROM Rule
-        WHERE warn_id = #{warnId} AND battery_Type = (
-            SELECT battery_Type FROM Car
-            WHERE car_id = #{carId}
-        );
+        SELECT r.id, r.warn_id, r.warn_name, r.battery_type, r.warn_rule
+        FROM Rule r
+        JOIN Car c ON r.battery_Type = c.battery_Type
+        WHERE r.warn_id = #{warnId} AND c.car_id = #{carId};
     </select>
 </mapper>

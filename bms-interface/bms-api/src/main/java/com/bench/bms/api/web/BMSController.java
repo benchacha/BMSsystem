@@ -46,7 +46,7 @@ public class BMSController {
     private SignalListHandle signalListHandle;
 
     @PostMapping("warn")
-    public BaseRes<List<WarnVo>> queryWarnLevel(@Validated(ReportGroup.class) @RequestBody ValidList<SignalReq> signalReqList) {
+    public BaseRes<List<WarnVo>> getWarnLevel(@Validated(ReportGroup.class) @RequestBody ValidList<SignalReq> signalReqList) {
 
 
         List<SignalDto> signalDtoList = signalReqList.stream()
