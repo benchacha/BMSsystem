@@ -32,13 +32,13 @@ public class CarDomainServiceImpl implements CarDomainService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void modifyCar(Long carId, CarDo carDo) {
-        carRepository.update(carId, carDo);
+    public void modifyCar(CarDo carDo) {
+        carRepository.update(carDo);
     }
 
     @Override
-    public void removeCar(Long carId) {
-        carRepository.remove(carId);
+    public void removeCar(String vid) {
+        carRepository.remove(vid);
     }
 
     @Override

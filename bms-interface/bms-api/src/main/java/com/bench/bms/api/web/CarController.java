@@ -40,18 +40,25 @@ public class CarController {
         return BaseRes.success(carVoConverter.toVo(carDto));
     }
 
-    @PutMapping("/car/modify/{carId}")
-    public BaseRes<CarVo> modify(@Validated(UpdateGroup.class) @RequestBody CarReq carReq, @PathVariable(value = "carId") Long carId){
+    @DeleteMapping("/car/{vid}")
+    public BaseRes<Void> delete(@PathVariable(value = "vid") String vid){
+        log.info("request delete car by vid: {}.", vid);
+        carService.remove(vid);
+        return BaseRes.success();
+    }
+
+    @PutMapping("/car/modify")
+    public BaseRes<CarVo> modify(@Validated(UpdateGroup.class) @RequestBody CarReq carReq){
         log.info("request modify car: {}", carReq);
         CarDto carDto = carVoConverter.toDto(carReq);
-        carService.modifyCar(carId, carDto);
+        carService.modifyCar(carDto);
         return BaseRes.success(carVoConverter.toVo(carDto));
     }
 
-    @GetMapping("/car/{carId}")
-    public BaseRes<CarVo> findCar(@PathVariable(value = "carId") Long carId) {
-        log.info("request find car:{}. ", carId);
-        CarDto carDto = carService.getCar(carId);
+    @GetMapping("/car/{vid}")
+    public BaseRes<CarVo> findCar(@PathVariable(value = "vid") String vid) {
+        log.info("request find car:{}. ", vid);
+        CarDto carDto = carService.getCar(vid);
         log.info("request find user:{}. response", carDto);
         return BaseRes.success(carVoConverter.toVo(carDto));
     }

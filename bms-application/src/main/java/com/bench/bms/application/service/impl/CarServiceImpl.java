@@ -37,19 +37,19 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public void remove(Long carId) {
-        carDomainService.removeCar(carId);
+    public void remove(String vid) {
+        carDomainService.removeCar(vid);
     }
 
     @Override
-    public void modifyCar(Long carId, CarDto carDto) {
+    public void modifyCar(CarDto carDto) {
         CarDo carDo = carDtoConverter.toDo(carDto);
-        carDomainService.modifyCar(carId, carDo);
+        carDomainService.modifyCar(carDo);
     }
 
     @Override
-    public CarDto getCar(Long carId) {
-        CarDo carDo = carRepository.fingByCarId(carId);
+    public CarDto getCar(String vid) {
+        CarDo carDo = carRepository.fingByVid(vid);
         return carDtoConverter.toDto(carDo);
     }
 

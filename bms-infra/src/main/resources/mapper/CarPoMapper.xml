@@ -18,7 +18,7 @@
 
     </resultMap>
 
-    <select id="searchByCarId" resultType="com.bench.bms.infra.repository.entity.CarPo">
+    <select id="selectByCarId" resultType="com.bench.bms.infra.repository.entity.CarPo">
         SELECT id, vid, car_id, battery_type, total_mileage, battery_status
         FROM Car WHERE car_id = #{carId}
     </select>
@@ -26,5 +26,20 @@
     <select id="ListAllCar" resultType="com.bench.bms.infra.repository.entity.CarPo">
         SELECT id, vid, car_id, battery_type, total_mileage, battery_status FROM Car;
     </select>
+
+    <update id="updateCarByVid" parameterType="com.bench.bms.infra.repository.entity.CarPo">
+        UPDATE Car
+        SET car_id = #{carId},
+        battery_type = #{batteryType},
+        total_mileage = #{totalMileage},
+        battery_status = #{batteryStatus},
+        update_time = #{updateTime},
+        update_user = #{updateUser}
+        WHERE vid = #{vid}
+    </update>
+
+    <delete id="deleteByVid">
+        DELETE from car where vid = #{vid}
+    </delete>
 
 </mapper>

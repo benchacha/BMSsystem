@@ -10,13 +10,13 @@ import java.util.List;
  **/
 public interface CarRepository {
 
-    CarDo fingByCarId(Long carId);
+    CarDo fingByVid(String vid);
 
     void save(CarDo carDo);
 
-    void remove(Long carId);
+    void remove(String vid);
 
-    void update(Long carId, CarDo carDo);
+    void update(CarDo carDo);
 
     List<CarDo> list();
 

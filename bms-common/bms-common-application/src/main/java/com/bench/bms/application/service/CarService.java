@@ -12,11 +12,11 @@ public interface CarService {
 
     CarDto addCar(CarDto carDto);
 
-    void remove(Long carId);
+    void remove(String vid);
 
-    void modifyCar(Long carId, CarDto carDto);
+    void modifyCar(CarDto carDto);
 
-    CarDto getCar(Long carId);
+    CarDto getCar(String vid);
 
     List<CarDto> listCars();
 

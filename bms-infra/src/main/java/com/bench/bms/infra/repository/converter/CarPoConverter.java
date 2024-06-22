@@ -3,7 +3,6 @@ package com.bench.bms.infra.repository.converter;
 import com.bench.bms.domain.model.CarDo;
 import com.bench.bms.infra.repository.entity.CarPo;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 /**
  * @Author bench

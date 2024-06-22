@@ -32,5 +32,4 @@ public class CarPo {
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private String updateUser;
-
 }

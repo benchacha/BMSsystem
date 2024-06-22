@@ -16,11 +16,11 @@ public interface CarDomainService {
 
 //    CarDo selectCarByCarId(Long carId);
 
-    void modifyCar(Long carId, CarDo carDo);
+    void modifyCar(CarDo carDo);
 
 //    List<CarDo> listAllCar();
 
-    void removeCar(Long carId);
+    void removeCar(String vid);
 
     String generateVid(String input);
 

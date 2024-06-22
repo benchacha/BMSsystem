@@ -14,7 +14,11 @@ import java.util.List;
 @Mapper
 public interface CarPoMapper extends BaseMapper<CarPo> {
 
-    CarPo searchByCarId(Long carId);
+    CarPo selectByCarId(Long carId);
 
     List<CarPo> ListAllCar();
+
+    boolean deleteByVid(String vid);
+
+    boolean updateCarByVid(CarPo carPo);
 }

@@ -13,6 +13,7 @@ import java.util.Map;
  * @Author bench
  * @Date 2024/06/19 20:42
  **/
+
 @Service
 public class SignalListHandleImpl implements SignalListHandle {
 

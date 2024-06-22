@@ -16,9 +16,11 @@ import lombok.Data;
 @Data
 public class CarReq {
 
+//    private
+    @NotNull(message = "汽车vid不能为空", groups = {RemoveGroup.class, UpdateGroup.class, SearchGroup.class})
     private String vid;
 
-    @NotNull(message = "汽车id不能为空", groups = {InsertGroup.class, UpdateGroup.class, RemoveGroup.class, SearchGroup.class})
+    @NotNull(message = "汽车id不能为空", groups = {InsertGroup.class, UpdateGroup.class})
     private Long carId;
 
     @NotBlank(message = "电池类型不能为空", groups = {InsertGroup.class, UpdateGroup.class})

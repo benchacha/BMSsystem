@@ -50,6 +50,7 @@ public class RuleRepositoryImpl implements RuleRepository {
         } else {
             // 处理未知的warnId情况，这里根据实际情况进行逻辑处理
             diff = 0; // 或者抛出异常，视情况而定
+//            throw new RuntimeException("没有该预警规则");
         }
 
         // 根据差值查找对应的报警等级

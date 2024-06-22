@@ -26,8 +26,8 @@ public class CarRepositoryImpl implements CarRepository {
     private CarPoConverter carPoConverter;
 
     @Override
-    public CarDo fingByCarId(Long carId) {
-        CarPo carPo = carPoMapper.searchByCarId(carId);
+    public CarDo fingByVid(String vid) {
+        CarPo carPo = carPoMapper.selectById(vid);
         return carPoConverter.toDo(carPo);
     }
 
@@ -39,14 +39,15 @@ public class CarRepositoryImpl implements CarRepository {
     }
 
     @Override
-    public void remove(Long carId) {
-        carPoMapper.deleteById(carId);
+    public void remove(String vid) {
+        carPoMapper.deleteByVid(vid);
     }
 
     @Override
-    public void update(Long carId, CarDo carDo) {
+    public void update(CarDo carDo) {
         CarPo carPo = carPoConverter.toPo(carDo);
-        carPoMapper.updateById(carPo);
+//        carPoMapper.
+        carPoMapper.updateCarByVid(carPo);
     }
 
     @Override
