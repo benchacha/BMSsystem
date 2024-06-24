@@ -5,10 +5,8 @@ import com.bench.bms.infra.repository.mapper.CarPoMapper;
 import com.bench.bms.infra.repository.mapper.RulePoMapper;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
 
 import java.util.List;
 
@@ -31,7 +29,7 @@ public class CarPoMapperTest {
 
     @Test
     public void test1(){
-        CarPo carPo = carPoMapper.searchByCarNumber(1);
+        CarPo carPo = carPoMapper.selectByCarId(1L);
         System.out.println(carPo);
 //        carPoMapper.ListAllCar();
     }

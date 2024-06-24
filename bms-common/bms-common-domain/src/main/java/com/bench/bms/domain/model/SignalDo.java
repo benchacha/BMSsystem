@@ -1,5 +1,6 @@
 package com.bench.bms.domain.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.Map;
@@ -10,6 +11,7 @@ import java.util.Map;
  **/
 
 @Data
+//@AllArgsConstructor
 public class SignalDo {
     private Long carId;
     private Integer warnId;

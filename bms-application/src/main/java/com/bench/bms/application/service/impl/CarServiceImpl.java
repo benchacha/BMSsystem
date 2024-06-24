@@ -38,6 +38,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void remove(String vid) {
+
         carDomainService.removeCar(vid);
     }
 
@@ -49,7 +50,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public CarDto getCar(String vid) {
-        CarDo carDo = carRepository.fingByVid(vid);
+        CarDo carDo = carRepository.findByVid(vid);
         return carDtoConverter.toDto(carDo);
     }
 

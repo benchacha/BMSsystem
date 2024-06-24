@@ -45,19 +45,13 @@ public class BmsWarnServiceImpl implements BmsWarnService {
     @Override
     public WarnDto getWarn(SignalDto signalDto) {
 
-//        1、根据输入的信号查找对应的规则
         SignalDo signalDo = signalDtoConverter.toDo(signalDto);
-
         RuleDo ruleDo = signalDomainService.getRuleBySignal(signalDo);
-//        2、根据查询到的规则和信号，判断报警信息
         WarnDo warnDo = ruleDomainService.getWarn(signalDo, ruleDo);
-//        3、保存报警信息
         warnDomainService.saveWarn(warnDo);
-
-        System.out.println(warnDo);
-//        4、向接口返回预警信息
         WarnDto warnDto = warnDtoConverter.toDto(warnDo);
         return warnDto;
+
     }
 
 

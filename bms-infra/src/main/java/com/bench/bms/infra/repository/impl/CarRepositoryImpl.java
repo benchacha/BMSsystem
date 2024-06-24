@@ -26,7 +26,7 @@ public class CarRepositoryImpl implements CarRepository {
     private CarPoConverter carPoConverter;
 
     @Override
-    public CarDo fingByVid(String vid) {
+    public CarDo findByVid(String vid) {
         CarPo carPo = carPoMapper.selectById(vid);
         return carPoConverter.toDo(carPo);
     }
@@ -39,15 +39,15 @@ public class CarRepositoryImpl implements CarRepository {
     }
 
     @Override
-    public void remove(String vid) {
-        carPoMapper.deleteByVid(vid);
+    public Integer remove(String vid) {
+        return carPoMapper.deleteByVid(vid);
     }
 
     @Override
-    public void update(CarDo carDo) {
+    public Integer update(CarDo carDo) {
         CarPo carPo = carPoConverter.toPo(carDo);
 //        carPoMapper.
-        carPoMapper.updateCarByVid(carPo);
+        return carPoMapper.updateCarByVid(carPo);
     }
 
     @Override

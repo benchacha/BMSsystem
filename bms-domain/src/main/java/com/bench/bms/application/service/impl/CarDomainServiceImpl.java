@@ -1,5 +1,7 @@
 package com.bench.bms.application.service.impl;
 
+import com.bench.bms.common.exception.DomainException;
+import com.bench.bms.common.exception.exceptionsenum.DomainExceptionEnum;
 import com.bench.bms.domain.model.CarDo;
 import com.bench.bms.domain.service.CarDomainService;
 import com.bench.bms.infra.repository.CarRepository;
@@ -33,11 +35,17 @@ public class CarDomainServiceImpl implements CarDomainService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void modifyCar(CarDo carDo) {
+        if (carRepository.remove(carDo.getVid()) == 0){
+            throw new DomainException(DomainExceptionEnum.CAR_NOT_FOUND);
+        }
         carRepository.update(carDo);
     }
 
     @Override
     public void removeCar(String vid) {
+        if (carRepository.remove(vid) == 0){
+            throw new DomainException(DomainExceptionEnum.CAR_NOT_FOUND);
+        }
         carRepository.remove(vid);
     }
 

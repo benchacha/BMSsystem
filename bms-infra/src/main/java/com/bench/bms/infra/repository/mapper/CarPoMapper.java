@@ -18,7 +18,7 @@ public interface CarPoMapper extends BaseMapper<CarPo> {
 
     List<CarPo> ListAllCar();
 
-    boolean deleteByVid(String vid);
+    Integer deleteByVid(String vid);
 
-    boolean updateCarByVid(CarPo carPo);
+    Integer  updateCarByVid(CarPo carPo);
 }
