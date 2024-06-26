@@ -15,7 +15,12 @@ import java.util.List;
 @Mapper
 public interface RulePoMapper extends BaseMapper<RulePo> {
 
-    List<RulePo> selectRules();
+    List<RulePo> listRules();
 
     RulePo selectRulesBySignal(SignalDo signalDo);
+
+    RulePo selectRuleById(Long Id);
+
+    Integer updateRuleById(RulePo rulePo);
+
 }

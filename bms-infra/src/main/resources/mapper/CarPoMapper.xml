@@ -23,7 +23,7 @@
         FROM Car WHERE car_id = #{carId}
     </select>
 
-    <select id="ListAllCar" resultType="com.bench.bms.infra.repository.entity.CarPo">
+    <select id="listAllCar" resultType="com.bench.bms.infra.repository.entity.CarPo">
         SELECT id, vid, car_id, battery_type, total_mileage, battery_status FROM Car;
     </select>
 

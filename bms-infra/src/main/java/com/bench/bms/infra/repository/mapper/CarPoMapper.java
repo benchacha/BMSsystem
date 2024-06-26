@@ -16,7 +16,7 @@ public interface CarPoMapper extends BaseMapper<CarPo> {
 
     CarPo selectByCarId(Long carId);
 
-    List<CarPo> ListAllCar();
+    List<CarPo> listAllCar();
 
     Integer deleteByVid(String vid);
 

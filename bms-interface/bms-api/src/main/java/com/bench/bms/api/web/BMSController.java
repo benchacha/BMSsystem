@@ -12,7 +12,6 @@ import com.bench.bms.common.model.BaseRes;
 import com.bench.bms.common.model.ValidGroup.ReportGroup;
 import com.bench.bms.common.model.ValidList;
 import jakarta.annotation.Resource;
-import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;

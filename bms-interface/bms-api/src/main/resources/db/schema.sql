@@ -8,14 +8,14 @@ CREATE TABLE RULE (
       warn_id VARCHAR(255) NOT NULL COMMENT '规则编号',
       warn_name VARCHAR(255) NOT NULL COMMENT '规则名称',
       battery_type VARCHAR(255) NOT NULL COMMENT '电池类型',
-      warn_rule TEXT NOT NULL COMMENT '预警规则',
+      warn_rule VARCHAR(255) NOT NULL COMMENT '预警规则',
       create_time BIGINT UNSIGNED NOT NULL COMMENT '创建时间',
       create_user VARCHAR(255) NOT NULL COMMENT '创建者',
       update_time BIGINT UNSIGNED NOT NULL COMMENT '修改时间',
       update_user VARCHAR(255) NOT NULL COMMENT '修改者',
       INDEX idx_warn_id (warn_id),
       INDEX idx_battery_type (battery_type),
-      INDEX idx_warn_rule (warn_rule(255))  -- 如果需要索引，使用前缀索引
+      INDEX idx_warn_rule (warn_rule)  -- 如果需要索引，使用前缀索引
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='预警规则表';
 
 INSERT INTO RULE (warn_id, warn_name, battery_type, warn_rule)

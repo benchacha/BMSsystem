@@ -11,7 +11,10 @@ import java.util.Map;
 
 @Data
 public class RuleDto {
-
-    private Map<Double, Integer> rule;
+    private Long id;
+    private Integer warnId;
+    private String warnName;
+    private String batteryType;
+    private Map<Double, Integer> warnRule;
 
 }

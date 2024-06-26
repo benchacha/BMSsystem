@@ -2,11 +2,16 @@ package com.bench.bms.infra.repository.converter;
 
 import com.bench.bms.domain.model.RuleDo;
 import com.bench.bms.infra.repository.entity.RulePo;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -19,37 +24,33 @@ import java.util.Map;
 @Mapper(componentModel = "spring")
 public interface RulePoConverter {
 
-    @Mapping(source = "warnRule", target = "rule", qualifiedByName = "stringToSortedMap")
+    @Mapping(source = "warnRule", target = "warnRule", qualifiedByName = "stringToSortedMap")
     RuleDo toDo(RulePo rulePo);
 
+    @Mapping(source = "warnRule", target = "warnRule", qualifiedByName = "sortedMapToString")
     RulePo toPo(RuleDo ruleDo);
 
     @Named("stringToSortedMap")
     default Map<Double, Integer> stringToSortedMap(String warnRule) {
-        Map<Double, Integer> ruleMap = new LinkedHashMap<>();
-
-        // 去除首尾的空格并去除分号
-        warnRule = warnRule.trim().replaceAll(";$", "");
-
-        // 按逗号和分号分割字符串
-        String[] pairs = warnRule.split("[,;]\\s*");
-
-        // 解析每个键值对
-        for (String pair : pairs) {
-            String[] keyValue = pair.split(":\\s*");
-            if (keyValue.length == 2) {
-                try {
-                    Double key = Double.parseDouble(keyValue[0]);
-                    Integer value = Integer.parseInt(keyValue[1]);
-                    ruleMap.put(key, value);
-                } catch (NumberFormatException e) {
-                    throw new IllegalArgumentException("Invalid format for warnRule: " + warnRule);
-                }
-            } else {
-                throw new IllegalArgumentException("Invalid format for warnRule: " + warnRule);
-            }
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            return objectMapper.readValue(warnRule, new TypeReference<Map<Double, Integer>>() {});
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to convert String to Map<String, Double>", e);
         }
-
-        return ruleMap;
     }
+
+    @Named("sortedMapToString")
+    default String sortedMapToString(Map<Double, Integer> ruleMap) {
+        if (ruleMap == null || ruleMap.isEmpty()) {
+            return "";
+        }
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            return objectMapper.writeValueAsString(ruleMap);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("Failed to convert Map<Double, Integer> to JSON string", e);
+        }
+    }
+
 }

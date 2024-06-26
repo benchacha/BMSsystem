@@ -52,7 +52,7 @@ public class CarRepositoryImpl implements CarRepository {
 
     @Override
     public List<CarDo> list() {
-        List<CarPo> carPoList = carPoMapper.ListAllCar();
+        List<CarPo> carPoList = carPoMapper.listAllCar();
         List<CarDo> carDoList = carPoList.stream()
                 .map(carPoConverter::toDo)
                 .collect(Collectors.toList());

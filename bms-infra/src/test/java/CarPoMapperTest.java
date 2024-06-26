@@ -36,7 +36,7 @@ public class CarPoMapperTest {
 
     @Test
     public void test2(){
-        List<CarPo> carPoList = carPoMapper.ListAllCar();
+        List<CarPo> carPoList = carPoMapper.listAllCar();
 //        System.out.println(carPo);
 //        carPoMapper.ListAllCar();
         carPoList.forEach(System.out::println);
@@ -44,7 +44,7 @@ public class CarPoMapperTest {
 
     @Test
     public void test3(){
-        List<RulePo> rulePoList = rulePoMapper.selectRules();
+        List<RulePo> rulePoList = rulePoMapper.listRules();
 //        System.out.println(carPo);
 //        carPoMapper.ListAllCar();
         rulePoList.forEach(System.out::println);

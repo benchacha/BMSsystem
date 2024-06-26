@@ -35,10 +35,10 @@ public class CarDomainServiceImpl implements CarDomainService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void modifyCar(CarDo carDo) {
-        if (carRepository.remove(carDo.getVid()) == 0){
+        if (carRepository.update(carDo) == 0){
             throw new DomainException(DomainExceptionEnum.CAR_NOT_FOUND);
         }
-        carRepository.update(carDo);
+//        carRepository.update(carDo);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class CarDomainServiceImpl implements CarDomainService {
         if (carRepository.remove(vid) == 0){
             throw new DomainException(DomainExceptionEnum.CAR_NOT_FOUND);
         }
-        carRepository.remove(vid);
+//        carRepository.remove(vid);
     }
 
     @Override
